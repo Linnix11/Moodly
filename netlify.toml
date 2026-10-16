@@ -1,0 +1,14 @@
+# Netlify : le site est dans frontend/ (build Vite)
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Application à une seule page : toutes les adresses (/console, /aide…) servent index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Hallmark · genre: editorial (soft) · design-system: design.md · designed-as-app
+ * theme: custom · brand-locked (charte WorkZen, hex exacts) · tone: carnet de bord calme
+ * display: Fraunces 500 (titres, chiffres clés) · body: Poppins (charte)
+ * paper: #EAF5F8 bleu pâle · surfaces: #FFFFFF · ink-surface: #123B63
+ * pre-emit critique: P4 H4 E4 S4 R4 V4
+ */
+
+/*
+ * Charte WorkZen (couleurs exactes, à ne pas modifier) :
+ *   bleu profond #123B63 · turquoise #21A6A6 (principal) · vert sauge #8BC9A3 (positif)
+ *   vert menthe #DDF3E9 · bleu pâle #EAF5F8 (fonds) · blanc #FFFFFF · police Poppins
+ * Teintes dérivées, uniquement pour la lisibilité (WCAG AA) :
+ *   brand-700 #167B7B = turquoise foncé pour texte et boutons (5,06:1 sur blanc)
+ *   gris teintés vers le bleu profond ; verts sauge foncés pour le texte « positif ».
+ * Les classes Tailwind gray-* et emerald-* de toute l'app pointent vers ces teintes.
+ */
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Voix d'affichage : questions et chiffres clés uniquement, toujours en romain */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Charte */
+  --color-wz-navy: #123b63;
+  --color-wz-teal: #21a6a6;
+  --color-wz-sage: #8bc9a3;
+  --color-wz-mint: #ddf3e9;
+  --color-wz-pale: #eaf5f8;
+  --color-wz-white: #ffffff;
+
+  /* Échelle turquoise (500 = charte) */
+  --color-brand-50: #eaf5f8;
+  --color-brand-100: #ddf3e9;
+  --color-brand-200: #b5e3e3;
+  --color-brand-300: #7fcfcf;
+  --color-brand-400: #4dbaba;
+  --color-brand-500: #21a6a6;
+  --color-brand-600: #1c9191;
+  --color-brand-700: #167b7b;
+  --color-brand-800: #123b63;
+  --color-brand-900: #0d2c4a;
+  --color-sage: #8bc9a3;
+
+  /* Échelle des humeurs (1 à 5) : du bleu profond au vert sauge */
+  --color-mood-1: #123b63;
+  --color-mood-2: #145b6f;
+  --color-mood-3: #167b7b;
+  --color-mood-4: #21a6a6;
+  --color-mood-5: #8bc9a3;
+
+  /* Gris teintés vers le bleu profond : le texte principal (gray-900) EST le bleu profond */
+  --color-gray-50: oklch(98.4% 0.004 230);
+  --color-gray-100: oklch(96.2% 0.008 235);
+  --color-gray-200: oklch(92% 0.014 240);
+  --color-gray-300: oklch(86% 0.02 245);
+  --color-gray-400: oklch(70.5% 0.03 248);
+  --color-gray-500: oklch(53% 0.042 250);
+  --color-gray-600: oklch(47% 0.052 251);
+  --color-gray-700: oklch(41% 0.062 251);
+  --color-gray-800: oklch(37% 0.072 251);
+  --color-gray-900: #123b63;
+  --color-gray-950: oklch(26% 0.06 251);
+
+  /* « Positif » = famille sauge (200/500 = charte, 600+ assombris pour le texte) */
+  --color-emerald-50: oklch(97.5% 0.015 160);
+  --color-emerald-100: #ddf3e9;
+  --color-emerald-200: #8bc9a3;
+  --color-emerald-500: #8bc9a3;
+  --color-emerald-600: oklch(55% 0.1 157);
+  --color-emerald-700: oklch(48% 0.09 157);
+  --color-emerald-800: oklch(40% 0.08 157);
+
+  /* Formes : panneaux 10 px, champs 8 px, boutons et puces 8 px (rounded-lg), feuilles 20 px.
+   * rounded-full est réservé aux vrais cercles (avatars, points, interrupteurs). */
+  --radius-3xl: 20px;
+  --radius-2xl: 10px;
+  --radius-xl: 8px;
+  --radius-lg: 8px;
+  --radius-md: 6px;
+
+  /* Mouvement : courbes nommées, jamais de rebond */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html, body {
+  background-color: var(--color-wz-pale);
+  color: var(--color-wz-navy);
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 {
+  font-style: normal;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* Titres et chiffres en Fraunces : axe optique « display », jamais d'italique */
+.font-display {
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: -0.015em;
+}
+
+/* Chiffres alignés dans les tableaux et indicateurs */
+.tabular-nums, table, dd {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Arrivée douce des écrans (opacité seulement) */
+@keyframes wz-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes wz-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.wz-fade-in { animation: wz-fade-in 220ms var(--ease-out) both; }
+.wz-rise { animation: wz-rise 260ms var(--ease-out) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 120ms !important;
+  }
+  .wz-rise { animation-name: wz-fade-in; }
+}
+
+/* Listes déroulantes : flèche dessinée, même hauteur visuelle que les champs */
+select:not([multiple]) {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235e7288' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+  background-size: 16px;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}

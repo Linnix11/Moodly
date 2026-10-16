@@ -1,0 +1,22 @@
+# Dépendances et builds
+node_modules/
+dist/
+
+# Secrets : ne JAMAIS commiter
+.env
+.env.*
+!.env.example
+
+# Système / éditeurs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Vidéo de démo (trop lourde pour Git : la mettre sur Drive/YouTube)
+*.mp4
+*.mov
+
+# Modèle Expo non utilisé par le site
+/mobile/

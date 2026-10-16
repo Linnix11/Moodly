@@ -1,0 +1,29 @@
+/* WorkZen : tokens portables (charte). Source de vérité dans l'app : frontend/src/index.css */
+:root {
+  --color-navy: #123b63;   /* bleu profond : texte, titres */
+  --color-teal: #21a6a6;   /* turquoise : couleur principale */
+  --color-teal-ink: #167b7b; /* turquoise foncé : texte cliquable, boutons (AA) */
+  --color-sage: #8bc9a3;   /* vert sauge : positif */
+  --color-mint: #ddf3e9;   /* vert menthe : fonds doux */
+  --color-pale: #eaf5f8;   /* bleu pâle : fond des pages */
+  --color-white: #ffffff;  /* surfaces */
+
+  --color-mood-1: #123b63; /* échelle des humeurs, 1 = très mal */
+  --color-mood-2: #145b6f;
+  --color-mood-3: #167b7b;
+  --color-mood-4: #21a6a6;
+  --color-mood-5: #8bc9a3; /* 5 = très bien */
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif; /* titres et chiffres clés, romain */
+
+  --radius-card: 10px;
+  --radius-control: 8px;  /* boutons, champs, puces */
+  --radius-badge: 6px;
+  --radius-sheet: 20px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 150ms;
+  --dur-medium: 220ms;
+}

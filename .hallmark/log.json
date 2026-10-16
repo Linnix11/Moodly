@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2026-10-15",
+    "scope": "app",
+    "macrostructure": "app families (employee one-task · console workbench navy rail · split login)",
+    "theme": "custom",
+    "theme_axes": "light / classical-serif + rounded-sans / cool",
+    "vibe": "carnet de bord calme, charte WorkZen",
+    "enrichment": "none",
+    "brief": "WorkZen · refonte du style : Fraunces, formes 8 px, échelle d'humeur en barres, console bleu profond"
+  },
+  {
+    "date": "2026-10-12",
+    "scope": "app",
+    "macrostructure": "app families (employee one-task · console workbench · public long document)",
+    "theme": "custom",
+    "theme_axes": "light / rounded-sans / cool",
+    "vibe": "doux, apaisant, charte WorkZen",
+    "enrichment": "none",
+    "brief": "WorkZen · refonte de toute l'app sur la charte"
+  }
+]
