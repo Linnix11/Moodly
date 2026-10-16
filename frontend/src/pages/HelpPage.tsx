@@ -1,8 +1,8 @@
-import { ArrowLeft, ExternalLink, LifeBuoy, MessageSquare, Phone } from 'lucide-react'
+import { ArrowLeft, ExternalLink, LifeBuoy, MapPin, MessageSquare, Phone } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { AppHeader } from '../components/AppHeader'
 import { Screen } from '../components/Screen'
-import { HELP_CHECKED, HELP_SECTIONS, HELP_SOURCE, type HelpEntry, phoneHref } from '../lib/helpResources'
+import { HELP_CHECKED, HELP_SECTIONS, HELP_SOURCE, type HelpEntry, nearbyHref, phoneHref } from '../lib/helpResources'
 import { useAuth } from '../store/authStore'
 
 /** Une ressource : nom, description, horaires, bouton d'appel (ou SMS) et lien. */
@@ -12,6 +12,23 @@ function Entry({ e, urgent }: { e: HelpEntry; urgent: boolean }) {
       <p className="font-semibold text-gray-900">{e.name}</p>
       <p className="mt-0.5 text-sm text-gray-600">{e.description}</p>
       {e.hours && <p className="mt-1 text-xs text-gray-500">{e.hours}</p>}
+      {e.nearby && (
+        <div className="mt-3">
+          <a
+            href={nearbyHref(e.nearby.query)}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold whitespace-nowrap text-white hover:bg-brand-800 active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+          >
+            <MapPin size={16} aria-hidden="true" />
+            {e.nearby.label}
+            <span className="sr-only">(ouvre une carte dans un nouvel onglet)</span>
+          </a>
+          <p className="mt-2 text-xs text-gray-500">
+            Ouvre une carte avec les CMP autour de toi : adresse, téléphone, horaires et itinéraire. Autorise la localisation pour des résultats plus précis.
+          </p>
+        </div>
+      )}
       {(e.phone || e.url) && (
         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
           {e.phone && (

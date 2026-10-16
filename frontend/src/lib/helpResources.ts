@@ -18,6 +18,8 @@ export interface HelpEntry {
   hours?: string
   url?: string
   urlLabel?: string
+  /** Lieu sans numéro national : recherche sur une carte autour de la personne (adresse, téléphone, itinéraire) */
+  nearby?: { query: string; label: string }
 }
 
 export interface HelpSection {
@@ -78,6 +80,11 @@ export const HELP_SECTIONS: HelpSection[] = [
     id: 'accompagnement',
     title: 'Se faire accompagner',
     entries: [
+      {
+        name: 'CMP (centre médico-psychologique)',
+        description: "Psychiatres, psychologues et infirmiers en consultation, gratuitement. Le CMP qui te reçoit dépend de ton adresse : il n'y a pas de numéro national, cherche celui le plus proche de chez toi. Choisis un CMP « adultes » (le CMPP est pour les enfants).",
+        nearby: { query: 'centre médico-psychologique adultes', label: 'Trouver le CMP le plus proche' },
+      },
       { name: 'Mon soutien psy', description: "Jusqu'à 12 séances par an chez un psychologue partenaire, remboursées par l'Assurance Maladie, sans ordonnance.", url: 'https://monsoutienpsy.ameli.fr/recherche-psychologue', urlLabel: 'Trouver un psychologue' },
       { name: 'Psycom', description: 'Information publique et fiable sur la santé mentale, les troubles et les soins.', url: 'https://www.psycom.org', urlLabel: 'psycom.org' },
       { name: 'Toutes les lignes d\'écoute', description: "La liste officielle, par situation (jeunes, proches, deuil…).", url: HELP_SOURCE.url, urlLabel: 'sante.fr' },
@@ -87,3 +94,10 @@ export const HELP_SECTIONS: HelpSection[] = [
 
 /** Lien d'appel ou de SMS : « 09 72 39 40 50 » -> « tel:0972394050 » */
 export const phoneHref = (e: HelpEntry) => `${e.sms ? 'sms' : 'tel'}:${(e.phone ?? '').replace(/\s/g, '')}`
+
+/**
+ * Recherche autour de soi sur Google Maps (format officiel « Maps URLs ») : la carte affiche les lieux
+ * les plus proches avec adresse, téléphone, horaires et bouton Itinéraire. Aucune position n'est envoyée
+ * par WorkZen : c'est la carte qui demande la localisation, si la personne l'accepte.
+ */
+export const nearbyHref = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
