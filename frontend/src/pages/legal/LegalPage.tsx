@@ -2,6 +2,7 @@ import { ArrowLeft, ChevronRight } from 'lucide-react'
 import { Fragment, type ReactNode, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { LEGAL_DOCS, LEGAL_UPDATED, legalDoc } from '../../lib/legal'
+import { AccessibilityButton } from '../../components/AccessibilityButton'
 
 /** Surligne les passages « [À COMPLÉTER : …] » pour qu'ils sautent aux yeux tant qu'ils ne sont pas remplis. */
 function withPlaceholders(text: string): ReactNode {
@@ -51,9 +52,12 @@ export default function LegalPage() {
 
   return (
     <main className="mx-auto min-h-dvh w-full max-w-3xl px-5 pt-[max(env(safe-area-inset-top),1.5rem)] pb-16 lg:pt-12">
-      <button type="button" onClick={back} className="inline-flex items-center gap-1 rounded text-sm text-gray-500 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-brand-600">
-        <ArrowLeft size={16} aria-hidden="true" /> Retour
-      </button>
+      <div className="flex items-center justify-between gap-3">
+        <button type="button" onClick={back} className="inline-flex items-center gap-1 rounded text-sm text-gray-500 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-brand-600">
+          <ArrowLeft size={16} aria-hidden="true" /> Retour
+        </button>
+        <AccessibilityButton className="-mr-2.5" />
+      </div>
 
       {slug && !doc ? (
         <p className="mt-8 text-gray-700">Document introuvable. <Link to="/legal" className="text-brand-700 underline">Voir tous les documents</Link></p>

@@ -130,7 +130,7 @@ export default function JournalPage() {
                 if (!entry) {
                   return (
                     <div key={date} className={`flex aspect-square flex-col items-center justify-center rounded-xl ${ring}`}>
-                      <span className="text-[10px] text-gray-400">{day}</span>
+                      <span className="text-[0.625rem] text-gray-400">{day}</span>
                       <span className="mt-1 size-1.5 rounded-full bg-gray-300" aria-hidden="true" />
                       <span className="sr-only">{longDate(date)} : rien de saisi</span>
                     </div>
@@ -147,7 +147,7 @@ export default function JournalPage() {
                     className={`flex aspect-square flex-col items-center justify-center rounded-xl transition hover:bg-brand-50
                       focus-visible:outline-2 focus-visible:outline-brand-600 ${date === selected ? 'bg-brand-100' : ''} ${ring}`}
                   >
-                    <span className="text-[10px] text-gray-500">{day}</span>
+                    <span className="text-[0.625rem] text-gray-500">{day}</span>
                     <MoodMark score={entry.score} className="mt-1 h-4 w-2.5" />
                   </button>
                 )

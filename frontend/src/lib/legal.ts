@@ -334,6 +334,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
           "L'application enregistre seulement, dans le stockage de votre navigateur :",
           "- votre session de connexion, pour ne pas vous redemander votre mot de passe à chaque ouverture ;",
           "- votre journal privé ;",
+          "- vos réglages d'accessibilité (taille du texte, contraste, police, animations), qui ne sont jamais transmis à votre employeur ni à nos serveurs ;",
           "- le fait que vous avez déjà vu l'écran de bienvenue.",
         ],
       },

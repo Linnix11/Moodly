@@ -34,7 +34,7 @@ export function MoodPicker({ value, onChange }: Props) {
                 ${selected ? 'ring-2 ring-gray-900 ring-offset-2 ring-offset-wz-pale' : ''}`}
             />
             <span className={`font-display text-xl leading-none ${selected ? 'text-gray-900' : 'text-gray-500'}`}>{m.score}</span>
-            <span className={`min-h-[2lh] text-center text-[11px] leading-tight ${selected ? 'font-semibold text-gray-900' : 'text-gray-500'}`}>
+            <span className={`min-h-[2lh] text-center text-[0.6875rem] leading-tight ${selected ? 'font-semibold text-gray-900' : 'text-gray-500'}`}>
               {m.label}
             </span>
           </button>

@@ -2,6 +2,7 @@ import { type FormEvent, useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { LegalLinks } from '../components/LegalLinks'
 import { useAuth } from '../store/authStore'
+import { AccessibilityButton } from '../components/AccessibilityButton'
 
 const field =
   'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base transition-colors outline-none hover:border-gray-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-200'
@@ -34,10 +35,13 @@ export default function Login() {
   return (
     <div className="min-h-dvh lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
       <aside className="flex flex-col bg-wz-navy px-5 pt-[max(env(safe-area-inset-top),1.5rem)] pb-8 text-white lg:px-14 lg:py-12">
-        <p className="flex items-center gap-3 text-lg font-semibold tracking-tight">
-          <span className="flex size-10 items-center justify-center rounded-lg bg-white"><img src="/logo.png" alt="" className="h-7 w-auto" /></span>
-          WorkZen
-        </p>
+        <div className="flex items-center justify-between gap-3">
+          <p className="flex items-center gap-3 text-lg font-semibold tracking-tight">
+            <span className="flex size-10 items-center justify-center rounded-lg bg-white"><img src="/logo.png" alt="" className="h-7 w-auto" /></span>
+            WorkZen
+          </p>
+          <AccessibilityButton tone="dark" withLabel className="-mr-2.5" />
+        </div>
         <div className="mt-10 lg:mt-auto">
           <h1 className="font-display max-w-md text-[2.125rem] leading-[1.1] font-medium lg:text-5xl">
             Le moral de l'équipe, en 10 secondes par jour.

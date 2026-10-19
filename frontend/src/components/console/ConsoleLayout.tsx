@@ -3,6 +3,7 @@ import type { LucideIcon } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../../store/authStore'
 import { LegalLinks } from '../LegalLinks'
+import { AccessibilityButton } from '../AccessibilityButton'
 
 interface NavItem { to: string; label: string; icon: LucideIcon; end?: boolean }
 interface NavGroup { title: string; items: NavItem[] }
@@ -60,13 +61,14 @@ export default function ConsoleLayout() {
             <p className="text-lg leading-tight font-semibold tracking-tight text-white">WorkZen</p>
             <p className="text-xs text-brand-200">{isRh ? 'Console RH' : 'Console manager'}</p>
           </div>
+          <AccessibilityButton tone="dark" className="ml-auto lg:hidden" />
         </div>
 
         <nav aria-label="Console" className="px-3 lg:flex-1 lg:overflow-y-auto">
           <ul className="flex gap-1 overflow-x-auto pb-3 lg:block lg:space-y-6 lg:overflow-visible lg:pb-0">
             {nav.map((group) => (
               <li key={group.title} className="contents lg:block">
-                <p className="hidden px-3.5 pb-2 text-[11px] font-semibold tracking-wide text-brand-200/70 uppercase lg:block">{group.title}</p>
+                <p className="hidden px-3.5 pb-2 text-[0.6875rem] font-semibold tracking-wide text-brand-200/70 uppercase lg:block">{group.title}</p>
                 <ul className="contents lg:block lg:space-y-0.5">
                   {group.items.map(({ to, label, icon: Icon, end }) => (
                     <li key={to}>
@@ -105,6 +107,7 @@ export default function ConsoleLayout() {
               <p className="text-xs text-brand-200">{isRh ? 'RH' : 'Manager'}</p>
             </div>
           </div>
+          <AccessibilityButton tone="dark" withLabel className="mt-3 -ml-2.5 px-2.5! py-1.5!" />
           {!isRh && (
             <NavLink to="/manager" className="mt-3 flex items-center gap-2 text-sm text-brand-100/80 hover:text-white">
               <Smartphone size={16} aria-hidden="true" /> Version mobile

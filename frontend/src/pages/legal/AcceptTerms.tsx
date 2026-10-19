@@ -3,6 +3,7 @@ import { type FormEvent, useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Screen, Spinner } from '../../components/Screen'
 import { needsTermsAcceptance, useAuth } from '../../store/authStore'
+import { AccessibilityButton } from '../../components/AccessibilityButton'
 
 /** Première connexion (ou CGU mises à jour) : acceptation obligatoire avant d'utiliser l'app. */
 export default function AcceptTerms() {
@@ -33,6 +34,9 @@ export default function AcceptTerms() {
 
   return (
     <Screen>
+      <div className="flex justify-end">
+        <AccessibilityButton withLabel className="-mr-2.5" />
+      </div>
       <div className="flex flex-1 flex-col justify-center">
         <span className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-wz-mint text-brand-700">
           <ShieldCheck size={30} aria-hidden="true" />

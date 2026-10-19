@@ -4,6 +4,7 @@ import { AppHeader } from '../components/AppHeader'
 import { Screen } from '../components/Screen'
 import { HELP_CHECKED, HELP_SECTIONS, HELP_SOURCE, type HelpEntry, nearbyHref, phoneHref } from '../lib/helpResources'
 import { useAuth } from '../store/authStore'
+import { AccessibilityButton } from '../components/AccessibilityButton'
 
 /** Une ressource : nom, description, horaires, bouton d'appel (ou SMS) et lien. */
 function Entry({ e, urgent }: { e: HelpEntry; urgent: boolean }) {
@@ -63,9 +64,12 @@ export default function HelpPage() {
       {isEmployee ? (
         <AppHeader />
       ) : (
-        <button type="button" onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/'))} className="mb-6 inline-flex items-center gap-1 self-start rounded text-sm text-gray-500 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-brand-600">
-          <ArrowLeft size={16} aria-hidden="true" /> Retour
-        </button>
+        <div className="mb-6 flex items-center justify-between gap-3">
+          <button type="button" onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/'))} className="inline-flex items-center gap-1 rounded text-sm text-gray-500 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-brand-600">
+            <ArrowLeft size={16} aria-hidden="true" /> Retour
+          </button>
+          <AccessibilityButton className="-mr-2.5" />
+        </div>
       )}
 
       <span className="flex size-12 items-center justify-center rounded-lg bg-white text-brand-700">

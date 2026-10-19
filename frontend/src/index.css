@@ -140,3 +140,51 @@ select:not([multiple]) {
   padding-right: 2.25rem;
   cursor: pointer;
 }
+
+/* ───────── Accessibilité : réglages choisis par la personne (lib/a11y.ts, attributs sur <html>) ───────── */
+
+/* Taille du texte : toute l'interface est en rem, elle grandit d'un bloc */
+html[data-text="grand"] { font-size: 125%; }
+html[data-text="tres-grand"] { font-size: 150%; }
+
+/* Contraste renforcé : textes et filets plus foncés, fond blanc, contours, liens soulignés */
+html[data-contrast] {
+  --color-gray-100: oklch(91% 0.012 240);
+  --color-gray-200: oklch(58% 0.04 248);
+  --color-gray-300: oklch(52% 0.045 248);
+  --color-gray-400: oklch(42% 0.055 250);
+  --color-gray-500: oklch(36% 0.06 251);
+  --color-gray-600: oklch(31% 0.065 251);
+  --color-gray-700: oklch(27% 0.065 251);
+  --color-brand-700: #0e5c5c;
+  --color-brand-800: #0b2a47;
+  --color-wz-pale: #ffffff;
+}
+html[data-contrast], html[data-contrast] body { background-color: #ffffff; }
+html[data-contrast] :is(section, li, div, dl, form).bg-white { box-shadow: 0 0 0 1.5px var(--color-gray-500); }
+html[data-contrast] a:not([class*="bg-"]) { text-decoration: underline; text-underline-offset: 3px; }
+html[data-contrast] :focus-visible { outline: 3px solid #000 !important; outline-offset: 2px !important; }
+
+/* Police facile à lire : Atkinson Hyperlegible, lettres, mots et lignes plus espacés (WCAG 1.4.12) */
+html[data-dyslexia] {
+  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+}
+html[data-dyslexia] body { letter-spacing: 0.04em; word-spacing: 0.12em; }
+html[data-dyslexia] :is(p, li, dd, dt, label, td, th, legend) { line-height: 1.65 !important; }
+html[data-dyslexia] .font-display { letter-spacing: 0; font-weight: 700; }
+
+/* Réduire les animations : plus aucun mouvement ni fondu */
+html[data-reduce-motion] *, html[data-reduce-motion] *::before, html[data-reduce-motion] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* Agrandir les zones cliquables : 48 px minimum, cases à cocher plus grandes */
+html[data-large-targets] :is(button:not([role="switch"]), select, input:not([type="checkbox"], [type="radio"]), a[class*="rounded"]) {
+  min-height: 48px;
+}
+html[data-large-targets] :is(button, a)[aria-label] { min-width: 48px; justify-content: center; }
+html[data-large-targets] input:is([type="checkbox"], [type="radio"]) { width: 1.5rem; height: 1.5rem; }
+html[data-large-targets] [role="switch"] { transform: scale(1.2); transform-origin: right center; }

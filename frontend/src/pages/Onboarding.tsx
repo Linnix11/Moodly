@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { Screen } from '../components/Screen'
 import { ONBOARDING_KEY } from '../lib/constants'
 import { writeItem } from '../lib/storage'
+import { AccessibilityButton } from '../components/AccessibilityButton'
 
 const points = [
   {
@@ -29,7 +30,10 @@ export default function Onboarding() {
 
   return (
     <Screen>
-      <img src="/logo.png" alt="" className="mt-4 h-10 w-auto self-start" />
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <img src="/logo.png" alt="" className="h-10 w-auto" />
+        <AccessibilityButton withLabel className="-mr-2.5" />
+      </div>
       <h1 className="mt-6 font-display text-[2.125rem] leading-[1.1] font-medium text-gray-900">Bienvenue sur WorkZen</h1>
       <p className="mt-2 text-gray-500">Avant de commencer, 3 choses importantes.</p>
 

@@ -6,7 +6,13 @@ import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
 import '@fontsource/fraunces/500.css'
 import '@fontsource/fraunces/600.css'
+import '@fontsource/atkinson-hyperlegible/400.css'
+import '@fontsource/atkinson-hyperlegible/700.css'
 import './index.css'
+import { applyA11y, useA11y } from './lib/a11y'
+
+// Réglages d'accessibilité appliqués avant le premier affichage (pas de flash)
+applyA11y(useA11y.getState().settings)
 
 const root = createRoot(document.getElementById('root')!)
 

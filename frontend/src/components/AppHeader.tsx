@@ -1,6 +1,7 @@
 import { LogOut, Scale } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../store/authStore'
+import { AccessibilityButton } from './AccessibilityButton'
 
 const iconButton =
   'rounded-lg p-2.5 text-gray-500 transition-colors hover:bg-white hover:text-gray-900 active:bg-gray-100 focus-visible:outline-2 focus-visible:outline-brand-600'
@@ -18,6 +19,7 @@ export function AppHeader({ subtitle }: { subtitle?: string }) {
         {subtitle && <p className="mt-0.5 truncate text-sm text-gray-500">{subtitle}</p>}
       </div>
       <div className="-mr-2 flex items-center">
+        <AccessibilityButton />
         <Link to="/legal" aria-label="Informations légales et confidentialité" title="Informations légales et confidentialité" className={iconButton}>
           <Scale size={20} />
         </Link>
