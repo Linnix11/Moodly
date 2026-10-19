@@ -5,6 +5,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 import { Spinner } from './components/Screen'
 import { ONBOARDING_KEY } from './lib/constants'
 import { readItem } from './lib/storage'
+import AccessibilityPage from './pages/AccessibilityPage'
 import AcceptTerms from './pages/legal/AcceptTerms'
 import LegalPage from './pages/legal/LegalPage'
 import HelpPage from './pages/HelpPage'
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/conditions" element={<AcceptTerms />} />
         <Route path="/aide" element={<HelpPage />} />
+        <Route path="/accessibilite" element={<AccessibilityPage />} />
         <Route path="/legal" element={<LegalPage />} />
         <Route path="/legal/:slug" element={<LegalPage />} />
         <Route path="/onboarding" element={<ProtectedRoute role="employee"><Onboarding /></ProtectedRoute>} />

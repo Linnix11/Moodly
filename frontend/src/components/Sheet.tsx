@@ -1,5 +1,6 @@
 import { X } from 'lucide-react'
 import { type KeyboardEvent, type ReactNode, type RefObject, useEffect, useId, useRef } from 'react'
+import { createPortal } from 'react-dom'
 
 const FOCUSABLE = 'a[href], button:not([disabled]), textarea, select, input:not([disabled])'
 
@@ -48,7 +49,8 @@ export function Sheet({ title, onClose, children, initialFocus, sideOnDesktop = 
     }
   }
 
-  return (
+  // Rendu dans <body> : un parent en position fixe (menu de la console) ne peut pas le faire passer sous la page
+  return createPortal(
     <div className={`fixed inset-0 z-50 flex items-end justify-center ${sideOnDesktop ? 'lg:items-stretch lg:justify-end' : ''}`} onKeyDown={onKeyDown}>
       <div className="wz-fade-in absolute inset-0 bg-gray-900/35" onClick={onClose} aria-hidden="true" />
       <div
@@ -73,6 +75,7 @@ export function Sheet({ title, onClose, children, initialFocus, sideOnDesktop = 
         </div>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }
